@@ -23,10 +23,25 @@ def create_app():
 
 
     return app
+app = create_app()
+
+@app.route("/", methods=["GET"])
+def index():
+    return {
+        "service": "TechLearn QOTD Backend",
+        "status": "running",
+        "version": "v1",
+        "base_url": "/api/v1",
+        "endpoints": {
+            "daily_challenge": "/api/v1/daily-challenge",
+            "submit_solution": "/api/v1/daily-challenge/submissions",
+            "stats": "/api/v1/stats",
+            "leaderboard": "/api/v1/leaderboard",
+            "meta": "/api/v1/meta"
+        }
+    }
+
 
 if __name__ == "__main__":
-    app = create_app()
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
