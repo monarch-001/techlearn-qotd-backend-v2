@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from backend.data.store import submissions
+from data.store import submissions
 
 users_bp = Blueprint("users", __name__)
 
@@ -14,3 +14,4 @@ def user_submissions(user_id):
         "totalSubmissions": len(user_history),
         "submissions": user_history
     }), 200
+
