@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from backend.services.evaluator import evaluate_code, CodeExecutionError
-from backend.data.store import qotd, submissions
+from services.evaluator import evaluate_code, CodeExecutionError
+from data.store import qotd, submissions
 from datetime import datetime
 
 submission_bp = Blueprint("submission", __name__)
@@ -38,3 +38,4 @@ def submit_code():
     submissions.append(submission_record)
 
     return jsonify(result), 200
+
